@@ -12,7 +12,7 @@ instance View WelcomeView where
                   </h1>
 
                   <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">
-                      It's working!!
+                      It's working!!!
                   </h2>
                   <h1 class="elm">
                     Elm is not working... :(
