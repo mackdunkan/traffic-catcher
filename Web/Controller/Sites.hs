@@ -7,6 +7,8 @@ import Web.View.Sites.Edit
 import Web.View.Sites.Show
 
 instance Controller SitesController where
+    beforeAction = ensureIsUser
+    
     action SitesAction = do
         sites <- query @Site |> fetch
         render IndexView { .. }

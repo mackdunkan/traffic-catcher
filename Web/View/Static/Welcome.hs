@@ -8,7 +8,7 @@ instance View WelcomeView where
          <div style="background-color: #657b83; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1); border-radius: 4px">
               <div style="max-width: 800px; margin-left: auto; margin-right: auto">
                   <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">
-                      IHP
+                      Traffic Catcher
                   </h1>
 
                   <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">
@@ -18,13 +18,7 @@ instance View WelcomeView where
                     Elm is not working... :(
                   </h1>
 
-                  <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">
-                     Your new application is up and running.
-                  </p>
-
-                  <a href="https://ihp.digitallyinduced.com/Guide/your-first-project.html" style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;" target="_blank">
-                     Learn the Next Steps in the Documentation
-                  </a>
+                  
               </div>
          </div>
 

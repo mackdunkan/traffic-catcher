@@ -14,14 +14,6 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
-ALTER TABLE public.bonuses DISABLE TRIGGER ALL;
-
-INSERT INTO public.bonuses (id, site_id, title) VALUES ('ba2671d0-710f-46d8-8fc1-9ed15cb00b69', '00000000-0000-0000-0000-000000000000', '123');
-
-
-ALTER TABLE public.bonuses ENABLE TRIGGER ALL;
-
-
 ALTER TABLE public.sites DISABLE TRIGGER ALL;
 
 INSERT INTO public.sites (id, domain) VALUES ('ab4a9c75-2745-412b-853e-a83bed548891', 'dogmaweb.ru');
@@ -29,5 +21,21 @@ INSERT INTO public.sites (id, domain) VALUES ('ea1a9b5a-cab4-4023-8116-11658bbf2
 
 
 ALTER TABLE public.sites ENABLE TRIGGER ALL;
+
+
+ALTER TABLE public.bonuses DISABLE TRIGGER ALL;
+
+INSERT INTO public.bonuses (id, site_id, title) VALUES ('52f09298-c0f7-4918-886f-a8244b0c4d7e', 'ab4a9c75-2745-412b-853e-a83bed548891', 'Шапка2');
+INSERT INTO public.bonuses (id, site_id, title) VALUES ('3b4dc232-c2d2-4a9c-b84a-0fcd0c560541', 'ab4a9c75-2745-412b-853e-a83bed548891', 'Булка Хлеба');
+
+
+ALTER TABLE public.bonuses ENABLE TRIGGER ALL;
+
+
+ALTER TABLE public.users DISABLE TRIGGER ALL;
+
+
+
+ALTER TABLE public.users ENABLE TRIGGER ALL;
 
 

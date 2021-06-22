@@ -9,3 +9,10 @@ CREATE TABLE bonuses (
     title TEXT NOT NULL
 );
 ALTER TABLE bonuses ADD CONSTRAINT bonuses_ref_site_id FOREIGN KEY (site_id) REFERENCES sites (id) ON DELETE NO ACTION;
+CREATE TABLE users (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+    email TEXT NOT NULL,
+    password_hash TEXT NOT NULL,
+    locked_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+    failed_login_attempts INT DEFAULT 0 NOT NULL
+);
