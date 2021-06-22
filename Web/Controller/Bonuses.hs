@@ -8,7 +8,7 @@ import Web.View.Bonuses.Show
 
 instance Controller BonusesController where
     beforeAction = ensureIsUser
-
+    
     action NewBonuseAction { siteId } = do
         let bonuse = newRecord
                 |> set #siteId siteId
