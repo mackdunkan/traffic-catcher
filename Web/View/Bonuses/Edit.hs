@@ -7,7 +7,7 @@ instance View EditView where
     html EditView { .. } = [hsx|
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href={BonusesAction}>Bonuses</a></li>
+                <!-- <li class="breadcrumb-item"><a href={BonusesAction}>Bonuses</a></li> -->
                 <li class="breadcrumb-item active">Edit Bonuse</li>
             </ol>
         </nav>

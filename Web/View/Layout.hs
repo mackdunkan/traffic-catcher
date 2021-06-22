@@ -21,12 +21,8 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 </head>
 <body>
     <div class="container mt-4">
-        <a href={NewSessionAction} 
-            style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;" target="_blank">
-                Login
-        </a>
-        <a class="js-delete js-delete-no-confirm" href={DeleteSessionAction}>Logout</a>
         {renderFlashMessages}
+        {loginLogoutButton}
         {inner}
     </div>
 </body>
@@ -66,3 +62,9 @@ metaTags = [hsx|
     <meta property="og:description" content="TODO"/>
     {autoRefreshMeta}
 |]
+
+loginLogoutButton :: Html
+loginLogoutButton = 
+    case currentUserOrNothing of
+        Just (user :: User) -> [hsx|<a class="js-delete js-delete-no-confirm text-secondary" href={DeleteSessionAction}>Logout</a>|]
+        Nothing -> [hsx|<a class="text-secondary" href={NewSessionAction}>Login</a>|]

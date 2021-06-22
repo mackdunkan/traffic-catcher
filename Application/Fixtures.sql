@@ -14,10 +14,16 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
+ALTER TABLE public.users DISABLE TRIGGER ALL;
+
+INSERT INTO public.users (id, email, password_hash, locked_at, failed_login_attempts) VALUES ('35efe858-9629-4a12-9480-4275eca37e50', 'mackdunkan@gmail.com', 'sha256|17|Y32Ga1uke5CisJvVp6p2sg==|TSDuEs1+Xdaels6TYCkyCgIBHxWA/US7bvBlK0vHzvc=', NULL, 0);
+
+
+ALTER TABLE public.users ENABLE TRIGGER ALL;
+
+
 ALTER TABLE public.sites DISABLE TRIGGER ALL;
 
-INSERT INTO public.sites (id, domain) VALUES ('ab4a9c75-2745-412b-853e-a83bed548891', 'dogmaweb.ru');
-INSERT INTO public.sites (id, domain) VALUES ('ea1a9b5a-cab4-4023-8116-11658bbf2a1c', 'test.loc');
 
 
 ALTER TABLE public.sites ENABLE TRIGGER ALL;
@@ -25,17 +31,8 @@ ALTER TABLE public.sites ENABLE TRIGGER ALL;
 
 ALTER TABLE public.bonuses DISABLE TRIGGER ALL;
 
-INSERT INTO public.bonuses (id, site_id, title) VALUES ('52f09298-c0f7-4918-886f-a8244b0c4d7e', 'ab4a9c75-2745-412b-853e-a83bed548891', 'Шапка2');
-INSERT INTO public.bonuses (id, site_id, title) VALUES ('3b4dc232-c2d2-4a9c-b84a-0fcd0c560541', 'ab4a9c75-2745-412b-853e-a83bed548891', 'Булка Хлеба');
 
 
 ALTER TABLE public.bonuses ENABLE TRIGGER ALL;
-
-
-ALTER TABLE public.users DISABLE TRIGGER ALL;
-
-
-
-ALTER TABLE public.users ENABLE TRIGGER ALL;
 
 

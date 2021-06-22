@@ -33,8 +33,7 @@ data SitesController
 
 
 data BonusesController
-    = BonusesAction
-    | NewBonuseAction { siteId :: !(Id Site) }
+    = NewBonuseAction { siteId :: !(Id Site) }
     | ShowBonuseAction { bonuseId :: !(Id Bonuse) }
     | CreateBonuseAction
     | EditBonuseAction { bonuseId :: !(Id Bonuse) }

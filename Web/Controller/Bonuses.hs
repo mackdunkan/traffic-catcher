@@ -8,10 +8,6 @@ import Web.View.Bonuses.Show
 
 instance Controller BonusesController where
     beforeAction = ensureIsUser
-    
-    action BonusesAction = do
-        bonuses <- query @Bonuse |> fetch
-        render IndexView { .. }
 
     action NewBonuseAction { siteId } = do
         let bonuse = newRecord

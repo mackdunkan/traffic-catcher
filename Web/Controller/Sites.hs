@@ -10,11 +10,15 @@ instance Controller SitesController where
     beforeAction = ensureIsUser
     
     action SitesAction = do
-        sites <- query @Site |> fetch
+        sites <- query @Site 
+            |> filterWhere (#userId, currentUserId) 
+            |> fetch
         render IndexView { .. }
 
     action NewSiteAction = do
         let site = newRecord
+                |> set #userId currentUserId
+        user <- fetch currentUserId
         render NewView { .. }
 
     action ShowSiteAction { siteId } = do
@@ -42,7 +46,9 @@ instance Controller SitesController where
         site
             |> buildSite
             |> ifValid \case
-                Left site -> render NewView { .. } 
+                Left site -> do
+                    user <- fetch (get #userId site)
+                    render NewView { .. } 
                 Right site -> do
                     site <- site |> createRecord
                     setSuccessMessage "Site created"
@@ -55,5 +61,5 @@ instance Controller SitesController where
         redirectTo SitesAction
 
 buildSite site = site
-    |> fill @'["domain"]
+    |> fill @'["userId", "domain"]
     |> validateField #domain nonEmpty

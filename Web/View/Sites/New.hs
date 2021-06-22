@@ -1,7 +1,8 @@
 module Web.View.Sites.New where
 import Web.View.Prelude
 
-data NewView = NewView { site :: Site }
+data NewView = NewView { site :: Site
+                        , user :: User }
 
 instance View NewView where
     html NewView { .. } = [hsx|
@@ -17,6 +18,7 @@ instance View NewView where
 
 renderForm :: Site -> Html
 renderForm site = formFor site [hsx|
+    {hiddenField  #userId}
     {(textField #domain)}
     {submitButton}
 |]
