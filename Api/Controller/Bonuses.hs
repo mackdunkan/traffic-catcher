@@ -26,7 +26,8 @@ instance Controller BonusesController where
 
 instance ToJSON Bonuse where
     toJSON bonuse = object
-        [ "title" .= get #title bonuse
+        [   "id" .= get #id bonuse
+            , "title" .= get #title bonuse
         ]
 
 bst :: BS.ByteString -> T.Text
