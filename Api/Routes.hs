@@ -7,3 +7,6 @@ import Api.Types
 instance AutoRoute StaticController
 instance AutoRoute BonusesController
 
+
+instance AutoRoute ClientsController
+

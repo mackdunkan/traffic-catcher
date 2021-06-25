@@ -5,6 +5,7 @@ import Api.Controller.Prelude
 import Api.View.Layout (defaultLayout)
 
 -- Controller Imports
+import Api.Controller.Clients
 import Api.Controller.Bonuses
 import Api.Controller.Static
 
@@ -12,6 +13,7 @@ instance FrontController ApiApplication where
     controllers = 
         [ startPage WelcomeAction
         -- Generator Marker
+        , parseRoute @ClientsController
         , parseRoute @BonusesController
         ]
 

@@ -18,3 +18,7 @@ data BonusesController
     | UpdateBonuseAction { bonuseId :: !(Id Bonuse) }
     | DeleteBonuseAction { bonuseId :: !(Id Bonuse) }
     deriving (Eq, Show, Data)
+
+data ClientsController
+    = CreateClientAction
+    deriving (Eq, Show, Data)

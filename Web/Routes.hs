@@ -13,3 +13,6 @@ instance AutoRoute SessionsController
 
 instance AutoRoute BonusesController
 
+
+instance AutoRoute ClientsController
+

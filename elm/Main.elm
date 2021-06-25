@@ -8,7 +8,7 @@ import Http
 import Json.Decode as Decode exposing (Decoder, int, list, string)
 import Json.Decode.Pipeline exposing (required)
 import RemoteData exposing (RemoteData, WebData)
-
+import Random
 
 
 
@@ -20,6 +20,7 @@ type alias Bonuse =
 
 type alias Model =
     { bonuses : WebData (List Bonuse)
+    , winner : Int
     }
 
 
@@ -27,7 +28,7 @@ view : Model -> Html Msg
 view model =
     div []
         [ button [ onClick SendHttpRequest ]
-            [ text "Get data from server" ]
+            [ text "Получить бонусы" ]
         , viewPostsOrError model
         ]
 
@@ -39,7 +40,7 @@ viewPostsOrError model =
             text ""
 
         RemoteData.Loading ->
-            h3 [] [ text "Loading..." ]
+            h3 [] [ text "Загрузка..." ]
 
         RemoteData.Success posts ->
             viewPosts posts
@@ -63,9 +64,12 @@ viewError errorMessage =
 viewPosts : List Bonuse -> Html Msg
 viewPosts posts =
     div []
-        [ h3 [] [ text "Bonuses" ]
+        [ h3 [] [ text "Бонусы" ]
         , table []
             ([ viewTableHeader ] ++ List.map viewPost posts)
+        , div [] [
+            button [ onClick Roll ] [ text "Старт"]
+        ]
         ]
 
 
@@ -92,6 +96,8 @@ viewPost bonuse =
 type Msg
     = SendHttpRequest
     | DataReceived (WebData (List Bonuse))
+    | Roll
+    | WinnerBonus Int
 
 
 postDecoder : Decoder Bonuse
@@ -127,6 +133,12 @@ update msg model =
         DataReceived response ->
             ( { model | bonuses = response }, Cmd.none )
 
+        Roll ->
+            (model, Random.generate WinnerBonus (Random.int 1 6))
+        
+        WinnerBonus winnerBonus ->
+            ( { model | winner = winnerBonus }, Cmd.none )
+
 
 buildErrorMessage : Http.Error -> String
 buildErrorMessage httpError =
@@ -149,7 +161,8 @@ buildErrorMessage httpError =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { bonuses = RemoteData.NotAsked }, Cmd.none )
+    ( { bonuses = RemoteData.NotAsked
+        , winner = 0 }, Cmd.none )
 
 
 main : Program () Model Msg

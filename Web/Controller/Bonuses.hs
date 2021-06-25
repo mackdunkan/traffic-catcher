@@ -8,6 +8,9 @@ import Web.View.Bonuses.Show
 
 instance Controller BonusesController where
     beforeAction = ensureIsUser
+
+    action BonusesAction = do
+        redirectTo SitesAction
     
     action NewBonuseAction { siteId } = do
         let bonuse = newRecord

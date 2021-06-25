@@ -33,10 +33,21 @@ data SitesController
 
 
 data BonusesController
-    = NewBonuseAction { siteId :: !(Id Site) }
+    = BonusesAction
+    | NewBonuseAction { siteId :: !(Id Site) }
     | ShowBonuseAction { bonuseId :: !(Id Bonuse) }
     | CreateBonuseAction
     | EditBonuseAction { bonuseId :: !(Id Bonuse) }
     | UpdateBonuseAction { bonuseId :: !(Id Bonuse) }
     | DeleteBonuseAction { bonuseId :: !(Id Bonuse) }
+    deriving (Eq, Show, Data)
+
+data ClientsController
+    = ClientsAction
+    | NewClientAction
+    | ShowClientAction { clientId :: !(Id Client) }
+    | CreateClientAction
+    | EditClientAction { clientId :: !(Id Client) }
+    | UpdateClientAction { clientId :: !(Id Client) }
+    | DeleteClientAction { clientId :: !(Id Client) }
     deriving (Eq, Show, Data)

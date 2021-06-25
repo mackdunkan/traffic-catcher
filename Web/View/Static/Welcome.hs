@@ -11,21 +11,10 @@ instance View WelcomeView where
                       Traffic Catcher
                   </h1>
 
-                  <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">
-                      It's working!!!
-                  </h2>
-                  <h1 class="elm">
+                  <div class="elm">
                     Elm is not working... :(
-                  </h1>
+                  </div>
 
-                  
               </div>
          </div>
-
-         <div style="max-width: 800px; margin-left: auto; margin-right: auto; margin-top: 4rem">
-              <img src="/ihp-welcome-icon.svg" alt="/ihp-welcome-icon">
-              <p style="color: hsla(196, 13%, 50%, 1); margin-top: 4rem">
-                 You can modify this start page by making changes to "./Web/View/Static/Welcome.hs".
-              </p>
-         </div> 
 |]

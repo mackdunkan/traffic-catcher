@@ -24,6 +24,9 @@ instance Controller SitesController where
     action ShowSiteAction { siteId } = do
         site <- fetch siteId
             >>= fetchRelated #bonuses
+        clients <- query @Client
+            |> filterWhereIn (#bonuseId, ids (get #bonuses site))
+            |> fetch
         render ShowView { .. }
 
     action EditSiteAction { siteId } = do
